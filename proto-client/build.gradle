@@ -1,0 +1,14 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version "${springBootVersion}"
+    id 'io.spring.dependency-management' version '1.1.0'
+}
+
+dependencies {
+    compileOnly 'org.projectlombok:lombok'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    compileOnly "net.devh:grpc-client-spring-boot-starter:${springBootGrpcVersion}"
+    compileOnly project(':proto-core')
+    // https://mvnrepository.com/artifact/io.perfmark/perfmark-api
+    runtimeOnly 'io.perfmark:perfmark-api:0.26.0'
+}

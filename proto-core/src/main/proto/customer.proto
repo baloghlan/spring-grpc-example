@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package service;
+
+option java_package = "com.baloghlan.grpc.customer";
+option java_multiple_files = true;
+
+message CustomerGetRequest {
+  string id = 1;
+}
+
+message CustomerResponse {
+  string id = 1;
+  string full_name = 2;
+}
+
+enum CustomerErrorCode {
+  NOT_FOUND = 0;
+}
+
+message CustomerErrorResponse {
+  CustomerErrorCode error_code = 1;
+}
+
+service CustomerService {
+  rpc getCustomer(CustomerGetRequest) returns (CustomerResponse) {};
+}

@@ -1,0 +1,20 @@
+buildscript {
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version "${springBootVersion}"
+    id 'io.spring.dependency-management' version '1.1.0'
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    compileOnly "net.devh:grpc-server-spring-boot-starter:${springBootGrpcVersion}"
+    compileOnly project(':proto-core')
+    runtimeOnly 'io.perfmark:perfmark-api:0.26.0'
+    implementation 'org.projectlombok:lombok'
+
+}
+
