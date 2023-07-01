@@ -20,7 +20,7 @@ public class CustomerService {
             com.baloghlan.grpc.customer.CustomerResponse customer = customerServiceStub.getCustomer(customerGetRequest);
             return convertToResponse(customer);
         } catch (StatusRuntimeException exception) {
-            if (Status.NOT_FOUND.equals(exception.getStatus())) {
+            if (Status.NOT_FOUND.getCode().equals(exception.getStatus().getCode())) {
                 throw new ResourceNotFoundException("Customer not found by id " + id);
             }
             throw new RuntimeException();
